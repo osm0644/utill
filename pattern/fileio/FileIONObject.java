@@ -57,8 +57,34 @@ public class FileIONObject {
 		}
 		//3.2 stream 활용 출력
 		//objList.stream().forEach(o->printWriter.println(o));
+	
 		
 		printWriter.close();
+	}
+	
+	//Filewriter를 이용해서 특정 라인을 출력
+	public static void FileWriterLineByLineToSpecificFormat() throws IOException {
+		//Create Directory
+		
+		String outputDir = "inspector";
+		
+		File destFolder = new File("..//" + outputDir);
+		if (!destFolder.exists()) {
+			destFolder.mkdirs();
+		}
+		String outputPath = destFolder + "//" + "outputPath" + ".TXT";		
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(outputPath, true);
+			fw.write(String.format("%s#%s#%s#%s#%s\r\n","inspector", "budID", "card.toString()", "validateCode", "insp_time"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if (fw != null) { fw.close(); }
+		}
+
+		
 	}
 	
 	//Scanner를 사용해서 파일 라인별 객체 목록
