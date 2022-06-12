@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 //*********Socket 서버 코드
+//client로 부터 읽어서 다시 client로 보내는코드
+//아래는 한줄한줄 처리하는 코드
 public class SocketHandler {
 
 	private static final int SERVER_PORT = 9876;
