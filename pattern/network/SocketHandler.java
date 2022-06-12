@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
 
-
+//*********Socket 서버 코드
 public class SocketHandler {
 
 	private static final int SERVER_PORT = 9876;
