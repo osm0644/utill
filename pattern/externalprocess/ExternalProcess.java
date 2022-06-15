@@ -35,7 +35,7 @@ public class ExternalProcess {
 		Process theProcess = Runtime.getRuntime().exec(command);
 		PrintWriter printWriter = new PrintWriter(theProcess.getOutputStream(), true);
 		//BufferedWriter outStream = new BufferedWriter(new OutputStreamWriter(theProcess.getOutputStream(),"euc-kr"));
-	    
+	        //outSream으로 데이터 write할때 무조건 \n 그리고  outStream.flush() 까지
 		for(String oneData : writeData) {
 			printWriter.println(oneData);
 		}
