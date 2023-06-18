@@ -13,6 +13,7 @@ public class ThreadExample2 {
 
     //Start 시간을 찍고
     //pt/add_2sec.exe를 통해서 NUM.txt의 양수들을 덧셈 하는 예제
+    //mutithread에서 순서를 보장해야할때는 꼭 start, join을 한쌍씩 한번에 써줘야한다.
 
     //일반 파일 읽는 방법
 
