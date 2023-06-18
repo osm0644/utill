@@ -1,0 +1,75 @@
+< 개인 선행 학습 >
+
+##문자열 처리
+https://www.baeldung.com/java-strings-concatenation
+https://www.baeldung.com/java-split-string
+https://www.baeldung.com/java-join-and-split //stream 이용 문자열배열 합치기
+
+
+##Collections
+https://www.baeldung.com/java-collections
+ArrayList vs. LinkedList
+https://www.holaxprogramming.com/2014/02/12/java-list-interface/
+https://www.baeldung.com/java-sorting
+
+
+
+##List 삭제 
+https://www.baeldung.com/java-remove-value-from-list
+
+
+
+##HashSet vs. TreeSet
+https://tomining.tistory.com/168
+
+
+
+##Map Thread-Safe
+https://www.baeldung.com/java-synchronizedmap-vs-concurrenthashmap
+
+
+
+##BlockingQueue
+https://www.baeldung.com/java-blocking-queue
+https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html
+
+
+##Java try with resource
+https://www.baeldung.com/java-try-with-resources
+
+##Streams
+https://www.baeldung.com/java-streams
+
+##I/O
+https://www.baeldung.com/java-io
+
+##How to Read Text and Binary Files in Java
+https://funnelgarden.com/java_read_file/
+
+##File/Path 구분자
+https://www.baeldung.com/java-file-vs-file-path-separator
+~~windows assertEquals("dir1\\dir2", path.toString());
+
+##Socket
+https://www.baeldung.com/a-guide-to-java-sockets
+
+##외부 프로그램 호출
+https://www.baeldung.com/run-shell-command-in-java
+https://www.baeldung.com/java-lang-processbuilder-api
+https://mkyong.com/java/java-processbuilder-examples/
+Reflection
+https://www.baeldung.com/java-reflection
+
+
+#Embedded Jetty
+https://www.eclipse.org/jetty/documentation/jetty-9/index.html#jetty-helloworld
+https://www.eclipse.org/jetty/documentation/jetty-9/index.html#http-client
+https://examples.javacodegeeks.com/enterprise-java/jetty/embedded-jetty-server-example/
+https://www.baeldung.com/jetty-embedded
+
+#ServletContext
+https://creamilk88.tistory.com/87
+
+##x-forwarded-for 헤더 
+http://blog.plura.io/?p=6597
+https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/x-forwarded-headers.html
