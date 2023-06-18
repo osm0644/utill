@@ -1,0 +1,166 @@
+public static void main(String[] args) throws Exception {
+
+
+	// 1. 콘솔 입력
+	Scanner sc = new Scanner(System.in);
+	String inputVal = sc.nextLine();
+	int limitVal = Integer.parseInt(inputVal);
+
+	// 2. 파일 읽고 쓰기
+	Timer timer = new Timer();
+	timer.schedule(new TimerTask() {
+		
+	@Override
+
+	public void run() {
+
+		File file = new File(FILE_PATH);
+
+		long currentModifiedTime = file.lastModified();
+
+		if (currentModifiedTime > lastModifiedTime) {
+
+			lastModifiedTime = currentModifiedTime;
+			try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
+				raf.seek(filePointer);
+
+				String line;
+
+				while ((line = raf.readLine()) != null) {
+
+					// 마지막 줄만 처리
+
+					if (raf.getFilePointer() == raf.length()) {
+						String[] splitList = line.split("#");
+						//0001#SYS:086#PROC01:012#PROC02:030#PROC03:024#PROC04:015#PROC05:005
+
+						int sysUse = Integer.parseInt(splitList[1].split(":")[1]);
+
+						String abnormal = "";
+
+						if(limitVal < sysUse) {
+
+							abnormal = "#Y";
+
+						}else {
+
+							abnormal= "#N";
+
+						}
+
+						miList.add(new MonitoringInfo(line, abnormal, splitList[0], sysUse, 0));
+
+
+						int systemAvg = getSystemAvg(miList.size()-1);
+
+						miList.get(miList.size()-1).setSystemAvg(systemAvg);
+
+
+						if(isSystemError(systemAvg,limitVal)) {
+
+							//시스템 장애시 해야하는것 처리
+
+							String[] command = {"./SUPPORT/ALERT.exe",miList.get(miList.size()-1).toString()};
+
+							writeToExternalProcess(command);
+
+
+						}
+
+						filePointer = raf.getFilePointer();
+
+
+					}
+
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			}
+
+		}
+
+	}
+
+	}, 0, INTERVAL);
+
+
+
+}
+
+
+public static int getSystemAvg(int pointer) {
+
+
+	int systemAvg = 0;
+
+
+	if(pointer == 0) {
+
+		systemAvg = miList.get(pointer).getSystemUse();
+
+	}else if(pointer == 1){
+
+		systemAvg = Math.round((miList.get(pointer-1).getSystemUse()+miList.get(pointer).getSystemUse())/2);
+
+	}else{
+
+		systemAvg = Math.round((miList.get(pointer-2).getSystemUse()+miList.get(pointer-1).getSystemUse()+miList.get(pointer).getSystemUse())/3);
+
+	}
+
+	return systemAvg;
+
+
+
+}
+
+
+public static boolean isSystemError(int systemAvg, int limitVal) {
+
+
+	boolean systemError = true;
+
+
+	//if(systemAvg > limitVal) {
+
+	// //임계값 넘음
+
+	// disorderCount++;
+
+	// if(disorderCount >= 5) {
+
+	// systemError = true;
+
+	// }
+
+
+
+
+
+	// }
+
+
+
+
+
+	return systemError;
+
+
+}
+
+
+public static void writeToExternalProcess(String[] command) throws Exception {
+
+	Process theProcess = Runtime.getRuntime().exec(command);
+
+
+}
+
+
+
+
+
+}
