@@ -1,0 +1,26 @@
+      @Override
+      public void run() {
+        System.out.println("Start to produce a file - " + file.getName());
+
+        isRun = true;
+        if (!file.exists()) {
+          System.out.println("Failed to find a file - " + file.getPath());
+        }
+
+        //try 문에서 Stream을 열면 블럭이 끝났을 때 close를 해줌
+        try (BufferedReader br =
+            new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
+
+          while (isRun) {
+            //readLine(): 파일의 한 line을 읽어오는 메소드
+            final String line = br.readLine();
+            if (line != null) {
+              queue.add(line);
+            } else {
+              Thread.sleep(DELAY_MILLIS);
+            }
+          }
+        } catch (Exception e) {
+          System.out.println("Failed to tail a file - " + file.getPath());
+        }
+      }
