@@ -1,3 +1,5 @@
 //blocking queue
 
 https://blog.ggaman.com/926
+반복해서 가져와야하면
+while문 꼭 넣어주기
