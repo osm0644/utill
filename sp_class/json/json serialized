@@ -1,0 +1,2 @@
+gson 으로 json key값과 java 객체에 변수명을 다르게 사용할 경우 java 객체에 SerializedName 어노테이션을 사용하면 됩니다.
+https://cherrypick.co.kr/gson-serializedname-annotation/
