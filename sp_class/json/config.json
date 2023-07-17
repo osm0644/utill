@@ -1,0 +1,42 @@
+{
+  "PIPELINES": [
+    {
+      "INPUT": {
+        "HTTP": "http://127.0.0.1/8080/abc"
+      },
+      "REPLACE": {
+        "AFTER": "#",
+        "BEFORE": "/",
+        "OBJECT": "output"
+      },
+      "OUTPUT": [
+        {
+          "HTTP": "127.0.0.1/8080/abc"
+        },
+        {
+          "FILE": "./abc.txt"
+        }
+      ]
+    },
+    {
+      "INPUT": {
+        "FILE": "./abcd/txt"
+      },
+      "SPLIT": {
+        "DELIMETER": "/",
+        "RESULT": [
+          "output1",
+          "output2"
+        ]
+      },
+      "OUTPUT": [
+        {
+          "HTTP": "http://127.0.0.1/8080/abc"
+        },
+        {
+          "FILE": "./abc.txt"
+        }
+      ]
+    }
+  ]
+}
