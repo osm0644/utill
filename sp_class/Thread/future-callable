@@ -1,0 +1,28 @@
+1. future 정리
+https://codechacha.com/ko/java-future/
+스레드에서 값을 리턴해줄때 까지 기다림
+
+2. callable
+runable과 다르게 값을 리턴할수 있음
+https://mangkyu.tistory.com/259
+
+@Test
+void future() {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    Callable<String> callable = new Callable<String>() {
+        @Override
+        public String call() throws InterruptedException {
+            Thread.sleep(3000L);
+            return "Thread: " + Thread.currentThread().getName();
+        }
+    };
+
+
+    // It takes 3 seconds by blocking(블로킹에 의해 3초 걸림)
+    Future<String> future = executorService.submit(callable);
+
+    System.out.println(future.get());
+
+    executorService.shutdown();
+}
