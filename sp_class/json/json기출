@@ -1,0 +1,30 @@
+기출 파싱 문제
+
+Gson gson = new Gson();
+JsonObject workflows = networkSettings.getAsJsonObject("workflow");
+ for (String w : workflows.keySet()) {
+      String wholeData = workflows.get(w);
+      Workflow jsonObj = gson.fromJson(wholeData, Workflow.class);    
+ }
+
+ class workflow{
+  String startfrom;
+  List<State> states;
+  List<String> respones;
+ }
+
+
+workflow
+{
+workflow1:
+  { "firststep":"accept",
+    "state":{ "action": "accept",
+              "url":"http://127.0.1/8181",
+              "parameter":["id","count"],
+              "next":"add"},
+    "response":["aa","bb"]
+  }
+}
+workflow2:
+workflow3:
+}
